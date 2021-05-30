@@ -48,7 +48,7 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-const Topbar = () => {
+function Topbar() {
   const classes = useStyle();
   return (
     <AppBar className={classes.root} color="default">
@@ -95,6 +95,6 @@ const Topbar = () => {
       </Toolbar>
     </AppBar>
   );
-};
+}
 
 export default Topbar;
