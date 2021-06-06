@@ -23,6 +23,7 @@ const handle = nc()
         authorAvatar,
         thumb: req.file.location,
         videoUrl,
+        views: 0,
         updateAt: new Date(),
       });
       return res.status(200).json({

@@ -1,6 +1,7 @@
 import { Box, Grid } from '@material-ui/core';
 import Layout from '../components/Layout';
 import Video from '../components/Video';
+import getVideos from '../database/getVideo';
 
 function Home({ data }) {
   return (
@@ -21,48 +22,49 @@ function Home({ data }) {
 }
 
 export async function getStaticProps() {
-  const data = [
-    {
-      id: 1,
-      title: 'NEXT JS: O FRAMEWORK QUE VOCÊ DEVERIA CONHECER',
-      authorId: 1,
-      authorName: 'Jeff Mascarenhas',
-      authorAvatar: '',
-      thumb: '/thumbs/next01.jpeg',
-      videoUrl: '',
-      updateAt: new Date(),
-    },
-    {
-      id: 2,
-      title: 'NEXT JS: O FRAMEWORK QUE VOCÊ DEVERIA CONHECER',
-      authorId: 2,
-      authorName: 'Jeff Mascarenhas',
-      authorAvatar: '',
-      thumb: '/thumbs/next02.jpeg',
-      videoUrl: '',
-      updateAt: new Date(),
-    },
-    {
-      id: 3,
-      title: 'NEXT JS: O FRAMEWORK QUE VOCÊ DEVERIA CONHECER',
-      authorId: 3,
-      authorName: 'Jeff Mascarenhas',
-      authorAvatar: '',
-      thumb: '/thumbs/next03.jpeg',
-      videoUrl: '',
-      updateAt: new Date(),
-    },
-    {
-      id: 4,
-      title: 'NEXT JS: O FRAMEWORK QUE VOCÊ DEVERIA CONHECER',
-      authorId: 4,
-      authorName: 'Jeff Mascarenhas',
-      authorAvatar: '',
-      thumb: '/thumbs/next03.jpeg',
-      videoUrl: '',
-      updateAt: new Date(),
-    },
-  ];
+  // const data = [
+  //   {
+  //     id: 1,
+  //     title: 'NEXT JS: O FRAMEWORK QUE VOCÊ DEVERIA CONHECER',
+  //     authorId: 1,
+  //     authorName: 'Jeff Mascarenhas',
+  //     authorAvatar: '',
+  //     thumb: '/thumbs/next01.jpeg',
+  //     videoUrl: '',
+  //     updateAt: new Date(),
+  //   },
+  //   {
+  //     id: 2,
+  //     title: 'NEXT JS: O FRAMEWORK QUE VOCÊ DEVERIA CONHECER',
+  //     authorId: 2,
+  //     authorName: 'Jeff Mascarenhas',
+  //     authorAvatar: '',
+  //     thumb: '/thumbs/next02.jpeg',
+  //     videoUrl: '',
+  //     updateAt: new Date(),
+  //   },
+  //   {
+  //     id: 3,
+  //     title: 'NEXT JS: O FRAMEWORK QUE VOCÊ DEVERIA CONHECER',
+  //     authorId: 3,
+  //     authorName: 'Jeff Mascarenhas',
+  //     authorAvatar: '',
+  //     thumb: '/thumbs/next03.jpeg',
+  //     videoUrl: '',
+  //     updateAt: new Date(),
+  //   },
+  //   {
+  //     id: 4,
+  //     title: 'NEXT JS: O FRAMEWORK QUE VOCÊ DEVERIA CONHECER',
+  //     authorId: 4,
+  //     authorName: 'Jeff Mascarenhas',
+  //     authorAvatar: '',
+  //     thumb: '/thumbs/next03.jpeg',
+  //     videoUrl: '',
+  //     updateAt: new Date(),
+  //   },
+  // ];
+  const data = await getVideos();
   return {
     props: {
       data: JSON.parse(JSON.stringify(data)),
