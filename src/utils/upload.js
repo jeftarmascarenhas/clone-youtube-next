@@ -17,14 +17,14 @@ const upload = multer({
     bucket: process.env.AWS_BUCKET,
     acl: 'public-read',
     contentType: multerS3.AUTO_CONTENT_TYPE,
-    metadata: function (req, file, cb) {
+    metadata(req, file, cb) {
       cb(null, { fieldName: file.fieldname });
     },
-    key: function (req, file, cb) {
+    key(req, file, cb) {
       crypto.randomBytes(16, (err, hash) => {
         if (err) cb(err);
         const fileName = `${hash.toString('hex')}-${file.originalName}`;
-        cb(fileName);
+        cb(null, fileName);
       });
     },
   }),
